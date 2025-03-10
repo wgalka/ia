@@ -1,3 +1,36 @@
+:root {
+    --ur-main-color: #0033a0;
+    --ur-black: #000; /* Domyślny kolor tekstu */
+    --ur-white: #FEFEFE; /* Domyślne tło */
+  }
+
 body {
-    font-family: Corbel, "Segoe UI", Tahoma, sans-serif;
+    color: var(--ur-black);
+    background-color: var(--ur-main-color);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p {
+    width: 100%;
+    max-width: 80ch;
+    /* Maximum width of the text block is 80 characters */
+    line-height: 1.5;
+    /* Optional: makes text more readable */
+}
+
+main{
+    padding:1rem;
+    /* To be sure content contains 80 chars */
+    box-sizing: content-box;
+    text-align: left;
+    background-color: var(--ur-white);
+    width: 100%;
+    max-width: 80ch;
+    line-height: 1.5;
+    margin: auto;
+}
+
+textarea{
+    width: 100%;
+    max-width: 80ch;
 }
