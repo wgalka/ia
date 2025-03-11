@@ -93,6 +93,99 @@ php artisan serve --host=0.0.0.0 # with specified host
             <li>#pricing - <input id="fragment"></li>
         </ul>
 
+        <h2>Http</h2>
+
+        Read <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">article</a> and create definition of HTTP.
+
+        <input id="http"> - <textarea id="http-definition"></textarea>
+
+        <details>HTTP (Hypertext Transfer Protocol) is an application-layer protocol used for transmitting hypermedia
+            documents, such as HTML, over the web. It enables communication between clients (e.g., web browsers) and
+            servers using a request-response model. HTTP is stateless, meaning each request is processed independently
+            without retaining session information.
+
+            Modern versions, such as HTTP/2 and HTTP/3, improve performance through multiplexing and reduced latency.
+            When combined with TLS encryption, it becomes HTTPS, ensuring secure data transfer.
+        </details>
+
+        <h3>How HTTP works</h3>
+
+        <p>Create new folder and inside this folder create HTML document `httpdemo.html` wich contains simple HTML form
+            with fields form name, surname and age.</p>
+
+        <p>Start php server inside this document</p>
+
+        <pre>php -S localhost:8008</pre>
+
+        <p>curl (short for Client URL) is a command-line tool and library used for transferring data to or from a server
+            using various protocols like HTTP, HTTPS, FTP, FTPS, SCP, SFTP, LDAP, and others. It is widely used for
+            making network requests in scripts, APIs, and command-line environments.</p>
+
+        <p>Use curl to send http request and see response in console</p>
+
+        <pre>curl -v http://localhost:8008/httpdemo.html</pre>
+
+        <p>Name components of HTTP request and shortly describe it.</p>
+
+        <h3>HTTP request</h3>
+
+        <label for="Request-Line">
+            <pre>GET /httpdemo.html HTTP/1.1</pre>
+        </label>
+        <input id="Request-Line">
+        <textarea></textarea>
+
+
+        <label for="headers">
+            <pre>Host: localhost:8008
+User-Agent: curl/7.83.1
+Accept: */*</pre>
+        </label>
+        <input id="headers">
+        <textarea></textarea>
+
+        <label for="empty-line">
+            <pre>"
+                "</pre>
+        </label>
+        <input id="empty-line">
+        <textarea></textarea>
+
+        <h3>HTTP response</h3>
+
+        <label for="status-line">
+            <pre>HTTP/1.1 200 OK</pre>
+        </label>
+        <input id="status-line">
+        <textarea></textarea>
+
+        <label for="response-headers">
+            <pre>
+Host: localhost:8008
+Date: Thu, 27 Feb 2025 20:49:36 GMT
+Connection: close
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2353
+        </pre>
+        </label>
+        <input id="response-heasers">
+        <textarea></textarea>
+
+        <label for="response-body>">
+            <pre>
+&LT;!DOCTYPE html&GT;
+&LThtml lang="pl" data-bs-theme=""&GT;
+&LThead&GT
+&LT;link rel="icon" href="data :; base64,iVBORw0KGgo="&GT;
+&LT;meta charset="utf-8"&GT;
+&LT;meta name="viewport" content="width=device-width, initial-scale=1"&GT;
+&LT;title&GT;HTTP Request Components&LT;/title&GT;
+...
+        </pre>
+        </label>
+        <input id="response-body">
+        <textarea></textarea>
+
         <p>Now lets look inside routes/web.php file. Here we have defined basic path '/'. When we type in the browser
             our server address and provide that path then this piece of code will be executed.
             `view('welcome')` render a view form default resources/view folder. The view is named welcome.blade.php as
@@ -108,8 +201,10 @@ Route::get('/greetings', function () {
 });
 </pre>
 
-    <p>We can create a route that handles <a href="https://laravel.com/docs/12.x/routing#route-parameters">multiple paths</a>. For example any student id we provide.</p>
-    <pre>
+
+        <p>We can create a route that handles <a href="https://laravel.com/docs/12.x/routing#route-parameters">multiple
+                paths</a>. For example any student id we provide.</p>
+        <pre>
 Route::get('/check/{id}', function ($id) {
     // Define the response based on the id
     if ($id == 120321) {
@@ -122,8 +217,9 @@ Route::get('/check/{id}', function ($id) {
 });
     </pre>
 
-    <p>id parameter can be optional. By providing default value and mark id with `?` sign, path `/check` will be valid.</p>
-    <pre>
+        <p>id parameter can be optional. By providing default value and mark id with `?` sign, path `/check` will be
+            valid.</p>
+        <pre>
 Route::get('/check/{id?}', function ($id = None) {
     // Define the response based on the id
     if ($id == 120321) {
@@ -138,9 +234,11 @@ Route::get('/check/{id?}', function ($id = None) {
 });
 </pre>
 
-    <p>We can also handle query string usin Request object. For example for http://localhost:8000/user?id=123&name=John we can specify this Route which will read query string values and return it.</p>
+        <p>We can also handle query string usin Request object. For example for
+            http://localhost:8000/user?id=123&name=John we can specify this Route which will read query string values
+            and return it.</p>
 
-    <pre>
+        <pre>
 use Illuminate\Http\Request; # Its important to import proper packages
 
 Route::get('/user', function (Request $request) {
@@ -152,22 +250,30 @@ Route::get('/user', function (Request $request) {
 });
     </pre>
 
-    <p>Route order is important. If we define a route like `/{id}` before `/user`, the `/user` route will not be accessible because "user" will be treated as an {id} parameter.</p>
+        <p>Route order is important. If we define a route like `/{id}` before `/user`, the `/user` route will not be
+            accessible because "user" will be treated as an {id} parameter.</p>
 
-    <h3>Task 1</h3>
-    <p>Develop a Laravel route that takes two numbers as parameters, performs division, and returns the result. The result's decimal precision can be customized using a query string parameter.
-    </p>
+        <h3>Task 1</h3>
+        <p>Develop a Laravel route that takes two numbers as parameters, performs division, and returns the result. The
+            result's decimal precision can be customized using a query string parameter.
+        </p>
 
-    <details>
-        use <a href="https://www.php.net/manual/en/function.number-format.php">number_format</a> or <a href="https://www.php.net/manual/en/function.round.php">round</a>  to round a number.<br>
-        Ensure both parameters are numbers, otherwise return an error response (400 Bad Request).<br>
-        Prevent division by zero, returning an <a href="https://laravel.com/docs/12.x/errors#http-exceptions">error</a> if num2 is 0.<br>
-        Perform the division operation (num1 / num2).<br>
-        Allow optional precision control via the query string (?precision=3).<br>
-        Ensure precision is a non-negative integer (return an error if invalid).<br>
+        <details>
+            use <a href="https://www.php.net/manual/en/function.number-format.php">number_format</a> or <a
+                href="https://www.php.net/manual/en/function.round.php">round</a> to round a number.<br>
+            Ensure both parameters are numbers, otherwise return an error response (400 Bad Request).<br>
+            Prevent division by zero, returning an <a
+                href="https://laravel.com/docs/12.x/errors#http-exceptions">error</a> if
+            num2 is 0.<br>
+            Perform the division operation (num1 / num2).<br>
+            Allow optional precision control via the query string (?precision=3).<br>
+            Ensure precision is a non-negative integer (return an error if invalid).<br>
 
-        You can make custom error pages in resource/views.
-    </details>
+            You can make custom error pages in resource/views.
+        </details>
+
+
+
 
 
     </main>
