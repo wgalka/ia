@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="css/prism/prism.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        <h1>Requests</h1>
+        
+        <h2>Controllers <a href="https://laravel.com/docs/12.x/controllers">[1]</a></h2>
+        <p>In the previous laboratory, you learned how to create an application that returns a simple output when a web browser sends an HTTP request. 
+        We can list all available routes in our application using the following command:<code>php artisan route:list</code>.</p>
+
+        <p>The web.php file usually contains multiple routes, which can sometimes include complex logic. To organize our code more effectively, 
+        we use Controller classes. You can create a new simple controller using Artisan: <code>php artisan make:controller MyController</code> 
+        This will generate a file inside the app/Http/Controllers directory.
+        More frequently we will use resource controllers <a href="https://laravel.com/docs/12.x/controllers#resource-controllers">[2]</a> which provide a way to handle typical CRUD (Create, Read, Update, Delete) operations efficiently. 
+        Instead of defining individual methods for each action, we will generate a controller with predefined methods using the --resource flag. 
+        <code> php artisan make:controller ProductController --resource</code>
+
+        <pre> <code class="language-php">
+class ProductController extends Controller
+{
+    public function index()   // Display a list of resources
+    {
+        //
+    }
+
+    public function create()  // Show form for creating a new resource
+    {
+        //
+    }
+
+    public function store(Request $request) // Store a newly created resource
+    {
+        //
+    }
+
+    public function show($id) // Display a specific resource
+    {
+        //
+    }
+
+    public function edit($id) // Show form for editing a resource
+    {
+        //
+    }
+
+    public function update(Request $request, $id) // Update a specific resource
+    {
+        //
+    }
+
+    public function destroy($id) // Delete a specific resource
+    {
+        //
+    }
+}
+        </code></pre>
+    </p>
+
+    <p>Now to define routes for a resource controller, add this line to web.php:</p>
+
+    <pre><code class="language-php">
+use App\Http\Controllers\ProductController; // import our controller
+
+Route::resource('products', ProductController::class); // This single line creates routes for all the CRUD operations automatically
+    </code></pre>
+
+
+
+    <h2>Basic request methods <a href="https://laravel.com/docs/12.x/requests">[3]</a></h2>
+
+    <pre>
+        <code class="language-php">
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/request-info', function (Request $request) {
+    return response()->json([
+        'method' => $request->method(),      // GET, POST, etc.
+        'path' => $request->path(),          // Current request path
+        'url' => $request->url(),            // Full URL without query parameters
+        'full_url' => $request->fullUrl(),   // Full URL including query parameters
+        'ip' => $request->ip(),              // Client's IP address
+        'user_agent' => $request->header('User-Agent'), // Browser user agent
+        'headers' => $request->headers->all(), // All request headers
+        'query_params' => $request->query(), // Query string parameters
+        'post_data' => $request->post(),     // POST request data
+        'is_ajax' => $request->ajax(),       // Check if it's an AJAX request
+        'is_json' => $request->expectsJson() // Check if JSON response is expected
+    ]);
+});
+        </code>
+    </pre>
+
+    
+
+
+    <h2>Blade</h2>
+
+    <p>Blade is Laravel's built-in templating engine that helps you create dynamic web pages easily.  
+    Blade lets you insert dynamic data into HTML without writing complex PHP code inside your views. 
+    Instead of using raw PHP (<?php ?> tags), you use simplified syntax for loops, conditions, and reusable components.
+    </p>
+
+    <p>By default templates are located in a resource/views folder. To create a new view, simply create a new .blade.php file in the resources/views 
+        folder or inside subdirectories. </p>
+
+    
+
+    <pre><code class="language-html">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>Request Info&lt;/title>
+    &lt;style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; }
+    &lt;/style>
+&lt;/head>
+&lt;body>
+
+    &lt;div class="container">
+        &lt;h2>Request Information&lt;/h2>
+        &lt;table>
+            &lt;tr>&lt;th>Attribute&lt;/th>&lt;th>Value&lt;/th>&lt;/tr>
+            &lt;tr>&lt;td>Method&lt;/td>&lt;td>{{ $method }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>Path&lt;/td>&lt;td>{{ $path }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>URL&lt;/td>&lt;td>{{ $url }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>Full URL&lt;/td>&lt;td>{{ $full_url }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>IP Address&lt;/td>&lt;td>{{ $ip }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>User Agent&lt;/td>&lt;td>{{ $user_agent }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>Is AJAX&lt;/td>&lt;td>{{ $is_ajax ? 'Yes' : 'No' }}&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td>Expects JSON&lt;/td>&lt;td>{{ $is_json ? 'Yes' : 'No' }}&lt;/td>&lt;/tr>
+        &lt;/table>
+
+        &lt;h3>Headers&lt;/h3>
+        &lt;pre>{{ print_r($headers, true) }}&lt;/pre>
+
+        &lt;h3>Query Parameters&lt;/h3>
+        &lt;pre>{{ print_r($query_params, true) }}&lt;/pre>
+
+        &lt;h3>POST Data&lt;/h3>
+        &lt;pre>{{ print_r($post_data, true) }}&lt;/pre>
+    &lt;/div>
+
+&lt;/body>
+&lt;/html>
+    </code></pre>
+
+    </main>
+
+
+    <script>
+        function saveToLocalStorage(event) {
+            const element = event.target;
+            if (element.id) {  // Only save elements with an ID
+                localStorage.setItem(element.id, element.value);
+            }
+        }
+
+        function loadFromLocalStorage() {
+            document.querySelectorAll("input, textarea").forEach(element => {
+                if (element.id && localStorage.getItem(element.id)) {
+                    element.value = localStorage.getItem(element.id);
+                }
+                element.addEventListener("input", saveToLocalStorage);
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", loadFromLocalStorage);
+    </script>
+
+    <script src="css/prism/prism.js"></script>
+</body>
+</html>

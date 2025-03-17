@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="css/prism/prism.css" rel="stylesheet" />
+</head>
+<body>
+    
+
+
+    <script>
+        function saveToLocalStorage(event) {
+            const element = event.target;
+            if (element.id) {  // Only save elements with an ID
+                localStorage.setItem(element.id, element.value);
+            }
+        }
+
+        function loadFromLocalStorage() {
+            document.querySelectorAll("input, textarea").forEach(element => {
+                if (element.id && localStorage.getItem(element.id)) {
+                    element.value = localStorage.getItem(element.id);
+                }
+                element.addEventListener("input", saveToLocalStorage);
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", loadFromLocalStorage);
+    </script>
+
+    <script src="css/prism/prism.js"></script>
+</body>
+</html>

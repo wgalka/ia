@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab1</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="css/prism/prism.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         <p>By default, Laravel provides a sample environment file called .env.example. When setting up a project, you
             should copy this file to create your own .env file. Below are the basic configuraiton options:
         </p>
-        <pre>
+        <pre><code class="language-powershell">
 APP_NAME=Laravel
 APP_ENV=local        # Can be: local, production, testing
 APP_KEY=base64:...   # Security key (generated with `php artisan key:generate`)
@@ -39,7 +40,7 @@ DB_PORT=3306         # default mysql port
 DB_DATABASE=my_database # name of database
 DB_USERNAME=root     # default root password
 DB_PASSWORD=         # by default password for root is '' in xampp mysql database 
-
+</code>
 </pre>
 
         <p>Next we need to create database and create tables. Laravel use migrations to manage and version-control
@@ -296,6 +297,8 @@ Route::get('/user', function (Request $request) {
 
         window.addEventListener("DOMContentLoaded", loadFromLocalStorage);
     </script>
+
+    <script src="css/prism/prism.js"></script>
 </body>
 
 </html>
