@@ -34,3 +34,48 @@ textarea{
     width: 100%;
     max-width: 80ch;
 }
+
+.task{
+    padding-left: 5px;
+    border-left: 5px solid var(--ur-main-color); 
+}
+
+
+
+/* Apply to all tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--ur-white); /* Set the background color of the table to white */
+    color: var(--ur-black); /* Default text color */
+    border: 1px solid var(--ur-main-color); /* Set the border color to your main color */
+}
+
+/* Style table caption */
+caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ur-main-color); /* Set the caption color to your main color */
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Style table headers */
+th {
+    background-color: var(--ur-main-color); /* Set the header background to your main color */
+    color: var(--ur-white); /* Text color in the headers */
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Style table data */
+td {
+    padding: 10px 15px;
+    text-align: left;
+    border-top: 1px solid #ddd; /* Subtle border between rows */
+}
+
+/* Style table rows on hover */
+tr:hover {
+    background-color: #f4f4f4; /* Slight gray hover effect */
+}

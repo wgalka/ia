@@ -1,3 +1,4 @@
 # Internet Applications
 
-- [Lab1 - HTML5 and CSS3 basic knowledge](lab1.html)
+- [Lab1 - Laravel introduction](lab1.html)
+- [Lab2 - Interacting with database - Eloquent ORM](lab2-database.html)

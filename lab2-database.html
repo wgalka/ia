@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="css/prism/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main>
+        <h1><q>Database</q></h1>
+
+        <h2>Migrations</h2>
+        <p>Migration is a way to manage your database schema using PHP code instead of manually creating or modifying
+            tables in the database. Migrations act as version control for your database, allowing you to define table
+            structures and make changes incrementally over time.</p>
+
+        <p>Find a command in documentation to create migration</p>
+
+        <label><b>Create new migration</b></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <p>Each migration file contains two methods:
+        <ul>
+            <li>up() → Defines the table structure (creates or modifies tables).</li>
+            <li>down() → Reverts the changes (drops or restores tables).</li>
+        </ul>
+        </p>
+
+        <p>We use <code>Schema</code> fasade to manipulate database tables. There are 4 commonly used methods:
+        <ul>
+            <li><input type="text"> <!--Schema::create()--> - Creates a new table </li>
+            <li><input type="text"> <!--Schema::table()--> - Modifies an existing table</li>
+            <li><input type="text"> <!--Schema::drop()--> - Drops a table (if it exists, else error should be thrown)
+            </li>
+            <li><input type="text"> <!--Schema::dropIfExists()--> - Drops a table only if it exists</li>
+        </ul>
+        </p>
+
+        <p>Each fundamental method generally accepts two arguments. The first argument specifies the name of the table,
+            while the second argument is an anonymous function. This function receives a parameter of type Blueprint,
+            which serves as a representation of the table structure within the database schema.</p>
+
+        <pre><code class="language-php" data-line="2">return new class extends Migration {
+    public function up(): void {
+        Schema::create('table_name', function (Blueprint $table) {
+           //TODO create columns etc.
+        });
+    }
+
+    public function down(): void {
+        Schema::dropIfExists('table_name');
+    }
+};
+        </code></pre>
+
+        <p>The Blueprint class provides a rich set of methods for defining columns, indexes, and foreign key
+            relationships. Through it, developers can define a wide variety of column types such as strings, integers,
+            booleans, dates, and more. Additionally, it allows the creation of primary keys, unique constraints,
+            indexes, and foreign key relationships that establish associations between tables. Common methods for
+            Blueprint class are:
+        <ul>
+            <li> <input> - Auto-increment primary key</li>
+            <li> <input> - VARCHAR column</li>
+            <li> <input> - Integer column</li>
+            <li> <input> - Boolean columny</li>
+            <li> <input> - Long text column</li>
+            <li> <input> - Created_at & updated_at columns with date type</li>
+            <li> <input> - Adds deleted_at column for soft deletes</li>
+            <li> <input> - Foreign key reference</li>
+        </ul>
+        </p>
+
+        <details>
+            <summary>Soft delete</summary>
+            Soft deletes allow for the logical deletion of records in a database without actually removing the data from
+            the table. This is achieved by marking records as deleted using a special column (usually deleted_at), which
+            Laravel automatically manages.
+        </details>
+
+        <p>Each function is overloaded so that we can specify additional properties, such as the maximum and minimum
+            values for numeric columns or the length of text columns. This provides flexibility to tailor the database
+            schema to the specific needs of the application.</p>
+
+        <p>After the migration is prepared, we can invoke the `up` and `down` methods to apply the changes to the
+            database.
+            Now, follow the steps below to manage your migrations.</p>
+
+        <p>Check the status of the migrations to see if any migrations have already been run. To do this, please run the
+            following command:</p>
+
+        <label><b>Check the status of the migrations</b></label>
+        <input type="text" placeholder="php artisan ?????????" />
+
+        <p>Once you've checked the status, run all the migrations to apply any pending changes to the database. Use the
+            following command:</p>
+
+        <label><b>Run all the migrations</b></label>
+        <input type="text" placeholder="php artisan ?????????" />
+
+        <p>If you need to revert the last two migrations, run the following command to rollback the last two migrations:
+        </p>
+
+        <label><b>Revert given number of migrations</b></label>
+        <input type="text" placeholder="php artisan ??????????" />
+
+        <p>You can run the specific migration file. To do this, use the following command:</p>
+
+        <label><b>Run given migration file</b></label>
+        <input type="text" placeholder="php artisan ??????????" />
+
+        <p>In cases where the database schema is compromised or requires a complete reset, it may be necessary to
+            destroy the existing database and rebuild it from scratch. To accomplish this, you can execute the following
+            command:</p>
+
+        <label><b>Refreshing the Database</b></label>
+        <input type="text" placeholder="php artisan ??????????" />
+
+
+        <div class="task">
+
+            <p>Your task is to create migrations for the products and reviews tables. These migrations should create and
+                drop the tables with the given field restrictions and constraints. After creating the migrations, you
+                should also be able to drop the tables if needed.
+            </p>
+            <table>
+                <caption>Products Table</caption>
+                <thead>
+                    <tr class="highlight">
+                        <th>Field</th>
+                        <th>Description</th>
+                        <th>Constraints/Validation</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><strong>id</strong></td>
+                    <td>Unique identifier for each product (auto-increment).</td>
+                    <td>- Auto-incremented (not user input)</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>name</strong></td>
+                    <td>Name of the product (e.g., Wireless Bluetooth Headphones).</td>
+                    <td>- Min length: 5 characters<br>- Max length: 255 characters<br>- Cannot be empty</td>
+                </tr>
+                <tr>
+                    <td><strong>description</strong></td>
+                    <td>Detailed description of the product.</td>
+                    <td>- Min length: 20 characters<br>- Max length: 1000 characters<br>- Cannot be empty</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>price</strong></td>
+                    <td>Price of the product (e.g., 99.99).</td>
+                    <td>- Min value: 0.01<br>- Max value: No limit<br>- Decimal places: 2 (e.g., 99.99)</td>
+                </tr>
+                <tr>
+                    <td><strong>stock_quantity</strong></td>
+                    <td>How many units are available.</td>
+                    <td>- Min value: 0<br>- Max value: No limit (depends on inventory)</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>category</strong></td>
+                    <td>Category the product belongs to (e.g., Electronics).</td>
+                    <td>- Min length: 3 characters<br>- Max length: 50 characters<br>- Optional (can be empty)</td>
+                </tr>
+                <tr>
+                    <td><strong>brand</strong></td>
+                    <td>The brand name of the product (e.g., SoundMax).</td>
+                    <td>- Min length: 2 characters<br>- Max length: 100 characters<br>- Optional (can be empty)</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>image_url</strong></td>
+                    <td>URL to the image of the product.</td>
+                    <td>- Valid URL format (e.g., `http://example.com/image.jpg`)<br>- Optional (can be empty)</td>
+                </tr>
+                <tr>
+                    <td><strong>created_at</strong></td>
+                    <td>Date and time when the product was added.</td>
+                    <td>- Automatically set by the system when a new product is created (not user input)</td>
+                </tr>
+            </table>
+
+
+            <table>
+                <caption>Revievs Table</caption>
+                <thead>
+                    <tr class="highlight">
+                        <th>Field</th>
+                        <th>Description</th>
+                        <th>Constraints/Validation</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><strong>id</strong></td>
+                    <td>Unique identifier for each review (auto-increment).</td>
+                    <td>- Auto-incremented (not user input)</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>product_id</strong></td>
+                    <td>Foreign key linking to the Products table.</td>
+                    <td>- Must exist as a valid product in the `Products` table.<br>- Integer value.</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>rating</strong></td>
+                    <td>Rating from 1 to 5 stars.</td>
+                    <td>- Min value: 1<br>- Max value: 5<br>- Must be an integer.</td>
+                </tr>
+                <tr>
+                    <td><strong>review</strong></td>
+                    <td>The text feedback or review given by the user.</td>
+                    <td>- Min length: 10 characters<br>- Max length: 1000 characters<br>- Cannot be empty</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>created_at</strong></td>
+                    <td>Date and time when the review was posted.</td>
+                    <td>- Automatically set by the system when a new review is created (not user input)</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Models</h2>
+
+        <p>In Laravel, models are integral components of the framework's Eloquent ORM (Object-Relational Mapping), which
+            provides an elegant and expressive way to interact with the application's database. A model in Laravel
+            represents a single database table and allows developers to interact with that table as if it were an object
+            in their application. The model class serves as a blueprint for retrieving, inserting, updating, and
+            deleting records in the corresponding database table, abstracting away much of the raw SQL queries and
+            facilitating a more intuitive and object-oriented approach to database operations.</p>
+
+        <p>Each model in Laravel typically extends the Illuminate\Database\Eloquent\Model class, inheriting its methods
+            and properties that make it easy to perform common database tasks. By associating a model with a database
+            table, developers can interact with data using Eloquent methods, such as create(), update(), delete(), and
+            find(), which automatically generate and execute the necessary SQL queries. The table associated with the
+            model is conventionally named using the plural form of the model's class name (e.g., a User model would be
+            associated with a users table).</p>
+
+        <p>Laravel models also provide a convenient way to define relationships between different database tables. These
+            relationships—such as one-to-many, many-to-many, one-to-one, and polymorphic relationships—allow for
+            seamless interaction between related tables through the model's methods. Additionally, models can be
+            customized to include features like mutators and accessors for modifying data when retrieving or saving it,
+            scopes for reusable query constraints, and mass assignment protection through properties like $fillable and
+            $guarded.</p>
+
+
+        <p>We can create model with diferent options. There are commands for:</p>
+
+        <label><b>Create a Model</b></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <label><b>Create a Model and a Migration</b></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <label><mark><b>Create a Model, Migration, and Controller:</b></mark></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <label><b>Create a Model with Factory</b></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <label><b>Create a Model with Seeder</b></label><br>
+        <textarea rows="1" cols="80"></textarea>
+
+        <p>Models should align with the structure and requirements of our seeders, ensuring consistency and proper data
+            population. If the model is created first, the seeder should be designed to match the model’s attributes and
+            business logic. To achieve this, we can fill our model class with specific properties and methods, such as
+            defining the $fillable property for mass assignment, setting relationships with other models, and
+            implementing methods like accessors, mutators, and custom functions.</p>
+
+        <h3>Model class fields</h3>
+
+        <pre><code class="language-php">class Post extends Model
+{
+    protected $table = 'custom_posts_table';  // Specify a custom table name
+    protected $primaryKey = 'post_id';  // Specify a custom primary key
+    public $timestamps = false;  // Disable timestamps for this model
+    protected $fillable = ['title', 'content'];  // Only these fields can be mass-assigned
+    protected $guarded = ['id'];  // All fields except 'id' can be mass-assigned
+    protected $keyType = 'string';  // Specify a string as the primary key type. By default, Laravel assumes that the primary key is an integer.
+    public $incrementing = false;  // Disable auto-increment for the primary key
+    protected $dates = ['published_at'];  // Specify custom date fields. If your model contains attributes that should be treated as dates (e.g., created_at, updated_at, or any other custom date fields)
+    protected $casts = [ // The $casts property allows you to cast attributes to a specific type when retrieving them from the database. Common types include integer, boolean, float, array, and json
+        'is_active' => 'boolean',  // Cast 'is_active' to a boolean
+        'data' => 'array',  // Cast 'data' to an array
+    ];
+}
+        </code></pre>
+
+        <details>
+            <summary>mass-assigned</summary>
+            mass assignment refers to the process of assigning values to multiple attributes of a model at once,
+            typically using an array. However, mass assignment can pose a security risk if it's not handled properly.
+            Laravel protects against mass assignment vulnerabilities using fillable and guarded properties in models.
+        </details>
+
+        <h3>Model class Relationship Methods</h3>
+
+        <h4>One-to-Many</h4>
+        <pre><code class="language-php">class Post extends Model
+{
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+}
+</code></pre>
+        <h4>Many-to-One</h4>
+        <pre><code class="language-php">class Post extends Model
+{
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+}
+            </code></pre>
+        <h4>Many-to-Many</h4>
+        <pre><code class="language-php">class Post extends Model
+{
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+}          
+            </code></pre>
+
+        <h3>Events</h3>
+
+        <p>You can define model events to hook into the lifecycle of a model, such as creating, updating, deleting, etc.
+        </p>
+        <pre><code class="language-php">class Post extends Model
+{
+    protected static function booted()
+    {
+        static::created(function ($post) {
+            // Do something after a post is created
+        });
+    }
+} </code></pre>
+
+        <h3>Soft Deletes</h3>
+        <pre><code class="language-php">use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Post extends Model
+{
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];  // Define 'deleted_at' as a date field
+}
+</code></pre>
+
+        <p>Now that we have our models created, we can easily perform CRUD (Create, Read, Update, Delete) operations and
+            other database interactions using the Eloquent model. By leveraging the powerful features of Laravel’s
+            Eloquent ORM, we can create new records, retrieve existing ones, update attributes, and delete entries in
+            the database with minimal effort. Our model acts as an interface to the database, allowing us to manage data
+            in a structured and efficient manner, while also enabling us to implement complex queries, define
+            relationships, and apply business logic directly within the model.</p>
+
+
+        <h3>Create</h3>
+
+        <pre><code class="language-php">// Example: Create a new Post instance and save it
+use App\Models\Post;
+
+$post = new Post();
+$post->title = 'My First Post'; // content of title column
+$post->content = 'This is the content of my first post.'; // content in content column
+$post->save(); // Save to database
+
+// We can also create object by passing array to create() method
+$post = Post::create([
+    'title' => 'My First Post',
+    'content' => 'This is the content of my first post.',
+]);
+
+            </code></pre>
+
+        <h3>Read</h3>
+
+        <pre><code class="language-php">
+$posts = Post::all(); // get all posts
+$post = Post::find(1);  // Retrieves the post with ID = 1
+// Example: Get the first Post with a specific title
+$post = Post::where('title', 'My First Post')->first();
+// Example: Get Posts where 'is_active' is true
+$posts = Post::where('is_active', true)->get();
+</code></pre>
+
+        <h3>Update</h3>
+
+        <pre><code class="language-php">// Example: Update or create a Post based on a unique attribute
+$post = Post::updateOrCreate(
+    ['title' => 'My First Post'],  // Search condition
+    ['content' => 'Updated content for the first post.']  // New data
+);
+
+
+// Example: Update the content of a specific Post
+$post = Post::find(1);  // Find post with ID 1
+$post->update([
+    'content' => 'This is the updated content for the post.',
+]);
+</code></pre>
+
+        <h3>Delete</h3>
+
+        <pre><code class="language-php">// Example: Delete a Post by ID
+$post = Post::find(1);  // Find post with ID 1
+$post->delete();
+// Example: Delete a Post with a specific ID
+Post::destroy(1);  // Delete the post with ID = 1
+
+// Example: Delete multiple posts
+Post::destroy([1, 2, 3]);  // Deletes posts with IDs 1, 2, and 3
+
+// Example: Delete posts where 'is_active' is false
+Post::where('is_active', false)->delete();
+</code></pre>
+
+        <div class="task">
+            In this task, you are required to create Eloquent models for the Products and Reviews tables based on the
+            provided schema and constraints. You will need to define the necessary attributes and relationships
+            between the models, ensuring proper validation and mass-assignment protection.
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h2>Seeders</h2>
+
+        <p>In Laravel, seeders are classes that facilitate the process of populating a database with initial or sample
+            data. They are part of Laravel's database seeding feature, which provides a convenient mechanism for
+            inserting predefined records into the database. Seeders are especially useful during development and
+            testing, where it is necessary to quickly populate tables with dummy data, ensuring the application
+            functions as intended. These classes are stored within the database/seeders directory, and each seeder
+            typically contains a run() method, which is executed to insert the specified data. Seeders can be executed
+            individually or collectively via Artisan commands, allowing developers to efficiently manage database
+            entries.</p>
+
+    </main>
+
+
+    <script>
+        function saveToLocalStorage(event) {
+            const element = event.target;
+            if (element.id) {  // Only save elements with an ID
+                localStorage.setItem(element.id, element.value);
+            }
+        }
+
+        function loadFromLocalStorage() {
+            document.querySelectorAll("input, textarea").forEach(element => {
+                if (element.id && localStorage.getItem(element.id)) {
+                    element.value = localStorage.getItem(element.id);
+                }
+                element.addEventListener("input", saveToLocalStorage);
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", loadFromLocalStorage);
+    </script>
+
+    <script src="css/prism/prism.js"></script>
+</body>
+
+</html>
