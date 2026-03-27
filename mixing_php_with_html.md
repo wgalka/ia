@@ -1,3 +1,5 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eEmHAlMY67o?si=eQgxhiPpQMrC1gGn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Kod PHP często jest mieszany z kodem HTML. Poniżej znajduje się przykład generowania tabeli użytkowników, zrealizowany na trzy różne sposoby, co pozwala dostrzec różnice w czytelności i podejściu do kodu:
 
 ## Przykład: Lista użytkowników
