@@ -1,0 +1,26 @@
+% Plik: header.tex
+% Rozszerzona konfiguracja LaTeX dla Pandoc
+
+\usepackage{fontspec}
+\usepackage{newunicodechar}
+
+% Uwaga: Upewnij się, że poniższe czcionki są zainstalowane w Twoim systemie Windows.
+\setmainfont{Fira Sans}
+
+% Czcionka dla symboli/emoji (Segoe UI Emoji jest standardem na Windows)
+% Jeśli nie masz tej czcionki, zmień ją na "DejaVu Sans" lub "Noto Sans Symbols2"
+\newfontfamily{\emojifont}{Segoe UI Emoji}
+
+% Mapowanie brakujących symboli z Fira Sans (U+1F310, U+1F3C6 itd.)
+\newunicodechar{🌐}{{\emojifont\char"1F310}}
+\newunicodechar{🏆}{{\emojifont\char"1F3C6}}
+\newunicodechar{💻}{{\emojifont\char"1F4BB}}
+\newunicodechar{📚}{{\emojifont\char"1F4DA}}
+\newunicodechar{🛠}{{\emojifont\char"1F6E0}}
+\newunicodechar{🎯}{{\emojifont\char"1F3AF}}
+\newunicodechar{🚩}{{\emojifont\char"1F6A9}}
+
+% Dodatkowe ustawienia formatowania
+\usepackage{setspace}
+\setstretch{1.1} % Delikatnie większy interlinia dla lepszej czytelności
+\usepackage[margin=2.5cm]{geometry}
