@@ -93,7 +93,7 @@ Istotnym elementem rozwiązania będzie możliwość importowania historii trans
 
 * Instrukcję uruchomienia projektu
 * podręcznik użytkownika
-    * udokumentowany CRUD do conajmniej jednego zasobu który jest zależny od drugiego z panelu Administraotra (tabele są połączone relacją np. one-to-many)
+    * udokumentowany CRUD do conajmniej jednego zasobu który jest zależny od drugiego z panelu Administratora (tabele są połączone relacją np. one-to-many)
         * CREATE - formularz z pełną walidacją pól po stronie serwera i klienta. Formularz ma być przemyślany i dostosowany do potrzeb użytkownika. Formularz nie powinien ograniczać się wyłącznie do prostych pól typu „nazwa” i „opis”. Powinien być zaprojektowany w sposób przemyślany, uwzględniający strukturę danych oraz relacje między encjami w systemie. Oznacza to, że oprócz podstawowych pól wejściowych należy zadbać o poprawne odwzorowanie zależności (np. wybór elementu nadrzędnego z listy zamiast ręcznego wpisywania identyfikatora), walidację danych oraz czytelność interfejsu dla użytkownika.
         Dobrze zaprojektowany formularz prowadzi użytkownika przez proces wprowadzania danych, minimalizuje ryzyko błędów i zapewnia spójność informacji w systemie. W praktyce oznacza to m.in. stosowanie list rozwijanych (select), podpowiedzi, walidacji oraz logicznego podziału pól zamiast pozostawiania użytkownikowi pełnej dowolności wpisywania danych.
         * READ - lista zasobów z możliwością filtrowania i sortowania. Filtry powinny być logiczne i przewidywać większość scenariuszy w jakich użytkownik może chcieć filtrować i sortować dane.
@@ -124,21 +124,21 @@ Istotnym elementem rozwiązania będzie możliwość importowania historii trans
 2. Czym różni się HTTP od HTTPS?
 3. Jak zbudowane jest żądanie HTTP?
 4. Jak zbudowana jest odpowiedź HTTP?
-5. Jak obsługiwane są żądania HTTP w projekcie laravel?
+5. Jak obsługiwane są żądania HTTP w projekcie Laravel?
 6. Jakie są metody HTTP?
 7. Jakie są kody odpowiedzi HTTP?
 8. Jakie są nagłówki HTTP?
 9. Jakie metody HTTP obsługuje domyślnie język HTML?
-10. Jak obsługiwać pozostałe metody protokołu HTTP w projekcie laravel które nie są domyślnie wspierane przez HTML?
+10. Jak obsługiwać pozostałe metody protokołu HTTP w projekcie Laravel które nie są domyślnie wspierane przez HTML?
 11. Jakie znasz narzędzia do debugowania i testowania aplikacji webowych pod kątem interfejsu użytkownika?
-12. Jakie znasz narzędzia do debugowania i testowania aplikacji webowych pod kątem wysyłania żądań HTTP/kodu javascript?
+12. Jakie znasz narzędzia do debugowania i testowania aplikacji webowych pod kątem wysyłania żądań HTTP/kodu JavaScript?
 13. Jakie znasz narzędzia do debugowania i testowania aplikacji webowych pod kątem bazy danych?
 14. Opisz drogę, które instrukcje wywoływane są po kolei w twojej aplikacji po wpisaniu adresu strony w przeglądarce i zatwierdzeniu enterem.
 15. Opisz drogę, które instrukcje wywoływane są po kolei w twojej aplikacji po kliknięciu w przycisk "dodaj"/'usuń'/'edytuj' w formularzu dodawania nowego zasobu.
 16. Czym różni się GET od POST?
 17. Do czego wykorzystujemy poszczególne metody HTTP?
 18. W jaki sposób działa walidacja po stronie frontendu?
-19. W jaki sposób działa walidacja po stronie serwera laravel?
+19. W jaki sposób działa walidacja po stronie serwera Laravel?
 20. Czym są migracje i jak je tworzyć? Utwórz przykładową migracje która robi ....
 21. Czym są seedery i jak je tworzyć? Utwórz seeder który ....
 22. Czym są kontrolery i jak je tworzyć? Utwórz kontroler który ....
@@ -152,7 +152,7 @@ Istotnym elementem rozwiązania będzie możliwość importowania historii trans
 30. Do czego służy plik .env i dlaczego nie powinien trafiać do repozytorium (np. na GitHub)?
 31. Gdzie w strukturze katalogów Laravela szukać logów aplikacji?
 32. Protokół HTTP jest bezstanowy – w jaki sposób Laravel "pamięta" zalogowanego użytkownika?
-33. Jak powinny być przechowywane hasła w bazie danych? Jaki mechanizm wykorzystuje do tego Laravel i dlaczego nie wolno przechowywać haseł otwartym tekstem?
+33. Jak powinny być przechowywane hasła w bazie danych? Jaki mechanizm wykorzystuje do tego Laravel i dlaczego nie wolno przechowywać haseł jawnym tekstem?
 
 
 
@@ -176,5 +176,5 @@ Istotnym elementem rozwiązania będzie możliwość importowania historii trans
 3. Jakie mechanizmy bezpieczeństwa (poza CSRF) oferuje Laravel i jak chronią one aplikację przed atakami typu XSS czy SQL Injection?
 4. Opisz najtrudniejszą pod kątem logicznym funkcjonalność w Twoim projekcie (wymaganą na 5.0). Jakie wyzwania techniczne napotkałeś?
 5. Gdyby Twoja aplikacja zyskała gwałtowną popularność, jakie mechanizmy Laravela pomogłyby w jej optymalizacji (np. Cache, Kolejki - Queues)?
-6. Czym są i do czego służą transakcje w bazie danych (DB::transaction)? Dlaczego użycie ich w Twoim konkretnym projekcie podczas zapisu wielu powiązanych danyh było (lub mogłoby być) kluczowe?
+6. Czym są i do czego służą transakcje w bazie danych (DB::transaction)? Dlaczego użycie ich w Twoim konkretnym projekcie podczas zapisu wielu powiązanych danych było (lub mogłoby być) kluczowe?
 7. Co to jest podatność na atak typu 'Mass Assignment'? Jak za pomocą właściwości $fillable lub $guarded ustrzec się przed podmianą parametrów, takich jak status administratora (np. is_admin) podczas przesyłania formularza?
