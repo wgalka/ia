@@ -12,6 +12,8 @@ Ten dokument określa kryteria oceniania oraz oczekiwane efekty kształcenia dla
 | **4.0** | **Rozszerzony system uprawnień**<br>• Wprowadzenie użytkowników o różnych rolach.<br>• Zarządzanie własnymi zasobami przez użytkowników.<br>• Rozszerzenie roli administratora o pełne zarządzanie profilami i zasobami użytkowników. |
 | **5.0** | **Zaawansowana logika biznesowa**<br>• Implementacja dodatkowej, nietrywialnej logiki biznesowej.<br>• Funkcjonalności dedykowane dla użytkowników końcowych wykraczające poza proste CRUD. |
 
+**Wymagania technologiczne:** Projekt ma być realizowany w języku **PHP 8.5** z wykorzystaniem frameworku **Laravel 13**. Framework do frontendu jest **dowolny**.
+
 > [!IMPORTANT]
 > Efekt **EK_03** uznaje się za zaliczony, gdy projekt spełnia wymagania określone przynajmniej na ocenę **dostateczny (3.0)**.
 
@@ -33,6 +35,8 @@ Student wykazuje biegłość w posługiwaniu się:
 
 *   **Językami i technologiami webowymi**: HTML, CSS, PHP itp.
 *   **Narzędziami pomocniczymi**: Odpowiednie frameworki i pakiety usprawniające implementację oraz zarządzanie aplikacją.
+
+
 
 
 
