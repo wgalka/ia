@@ -1,3 +1,6 @@
+---
+layout: with_alerts
+---
 # 🌐 Wymagania Projektowe: Aplikacje Internetowe 2025/2026
 
 Ten dokument określa kryteria oceniania oraz oczekiwane efekty kształcenia dla projektu realizowanego w ramach przedmiotu.
