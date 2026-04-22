@@ -40,9 +40,6 @@ Student wykazuje biegłość w posługiwaniu się:
 *   **Narzędziami pomocniczymi**: Odpowiednie frameworki i pakiety usprawniające implementację oraz zarządzanie aplikacją.
 
 
-
-
-
 ## Tematy projektów 2025/2026
 
 ### Problem 1
