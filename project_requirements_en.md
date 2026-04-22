@@ -22,13 +22,16 @@ This document defines the grading criteria and expected learning outcomes for th
 
 ---
 
-## 🎯 Learning Outcomes (LO_03)
+## 🎯 Learning Outcomes
 
-### 💻 Design and Implementation
-The student can design and implement a web application using the technologies learned. The application must have a user interface (UI) enabling:
+### [LO_01] Knowledge of Web Technologies
+The student knows the basic principles of creating websites, has knowledge of web application architecture, and knows basic scripting languages used to implement web applications. (K_W06)
 
-*   Data exchange.
-*   Information processing.
+### [LO_02] Design and Implementation
+The student is able to design and implement a part of a web application with a user interface for data handling, including exchange and processing, using learned technologies and a selected framework. (K_U02, K_U07)
+
+### [LO_03] Teamwork
+The student is able to collaborate in a small team on developing and testing a web application according to an established workflow. (K_U05, K_U12)
 
 ### 📚 Working with Documentation
 The student can independently analyze documentation and specifications of modern tools and technologies, and then effectively use them in the application development process.
