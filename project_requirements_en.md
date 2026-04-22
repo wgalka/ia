@@ -18,11 +18,11 @@ This document defines the grading criteria and expected learning outcomes for th
 **Technological requirements:** The project is to be implemented in **PHP 8.5** using the **Laravel 13** framework. The frontend framework is **flexible**.
 
 > [!IMPORTANT]
-> The **EK_03** outcome is considered passed when the project meets the requirements specified for at least a **satisfactory (3.0)** grade.
+> The **LO_03** outcome is considered passed when the project meets the requirements specified for at least a **satisfactory (3.0)** grade.
 
 ---
 
-## 🎯 Learning Outcomes (EK_03)
+## 🎯 Learning Outcomes (LO_03)
 
 ### 💻 Design and Implementation
 The student can design and implement a web application using the technologies learned. The application must have a user interface (UI) enabling:
@@ -87,11 +87,11 @@ The goal of the project is to create a system enabling central management of sub
 An essential element of the solution will be the ability to import transaction history from CSV files provided by banks — from one or many accounts simultaneously. Based on the imported data, the system will analyze the repeatability of payments (e.g., cyclic monthly charges), identifying potential subscriptions. Such an approach will allow for partial automation of the service detection process and elimination of the need for manual entry of all data by the user, while increasing the accuracy and completeness of financial analysis.
 
 
-**The project can be carried out individually or in a group of n people.** Below are the guidelines for individual grades that must be demonstrated as your contribution to a given project. Other students cannot be the authors of the same functionalities. Below is a list of functionalities for given grades that must be demonstrated as your contribution to a given project:
+**The project must be carried out in a group of 2 to 7 people.** Below are the guidelines for individual grades that must be demonstrated as your contribution to a given project. Other students cannot be the authors of the same functionalities. Below is a list of functionalities for given grades that must be demonstrated as your contribution to a given project:
 
 ## Documentation
 
-**Non-contact hours – student's own work 20h**
+**Non-contact hours – student's own work 90h**
 
 ### For grade 3.0, the documentation should include:
 
