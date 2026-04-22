@@ -18,7 +18,7 @@ This document defines the grading criteria and expected learning outcomes for th
 **Technological requirements:** The project is to be implemented in **PHP 8.5** using the **Laravel 13** framework. The frontend framework is **flexible**.
 
 > [!IMPORTANT]
-> The **LO_03** outcome is considered passed when the project meets the requirements specified for at least a **satisfactory (3.0)** grade.
+> The learning outcome is considered passed when the project meets the requirements specified for at least a **satisfactory (3.0)** grade.
 
 ---
 
