@@ -9,32 +9,32 @@ List of helpful questions:
 ## Project Startup (Developer)
 
 Provide the technologies used in a clear format (e.g., a table) with links to official websites.
-**Key:** Always provide exact technology versions (e.g., `.NET 8.0`, `React 18`, `Python 3.12`). Lack of a specific version is a common reason for problems when running older projects on new machines.
+**Key:** Always provide exact technology versions (e.g., `PHP 8.5`, `Laravel 13`, `MySQL 8.0`). Lack of a specific version is a common reason for problems when running older projects on new machines.
 
 ### Software Requirements
 
 List the tools necessary to build and run the project in developer mode on a clean computer. Pay attention to:
 
 - **Operating System** (e.g., Windows 11, macOS, Linux).
-- **Runtime Environment / SDK** (e.g., .NET SDK 8.0, Node.js v20+, JDK 17).
-- **Database Engine** (e.g., PostgreSQL 16, MySQL, SQL Server 2022).
-- **Additional Tools** (e.g., Docker, Docker Compose, specific package manager like `npm` or `yarn`).
+- **Runtime Environment / SDK** (e.g., PHP 8.5, Node.js v22+, Composer).
+- **Database Engine** (e.g., MySQL 8.0, PostgreSQL 16).
+- **Additional Tools** (e.g., Docker, Docker Compose, specific package manager like `npm` or `composer`).
 
 ### Installation Process
 
 Step-by-step instructions that "hold your hand." Assume that the person running the project does not know the framework used.
 1. How to download the project (e.g., `git clone <url>`).
-2. How to install dependencies (e.g., `npm install`, `dotnet restore`, `pip install -r requirements.txt`).
+2. How to install dependencies (e.g., `composer install`, `npm install`).
 
 ### Configuration Process
 
 Describe everything a developer needs to set up on their machine before the first run:
 1. **Environment Variables:** e.g., create a `.env` file based on `.env.example` and enter API keys there.
 2. **Database:** how to configure the *connection string*.
-3. **Migrations:** command to create the database structure (e.g., `dotnet ef database update`, `python manage.py migrate`).
+3. **Migrations:** command to create the database structure (e.g., `php artisan migrate`, `php artisan db:seed`).
 4. **Initial Data (Seed):** how to generate test data and what the default login credentials are for the administrator account (login/password).
 
-**Running the project in the terminal:** Provide the exact command to start the application (e.g., `dotnet run`, `npm run dev`) along with information on the address where the application will be available in the browser (e.g., `http://localhost:5000`).
+**Running the project in the terminal:** Provide the exact command to start the application (e.g., `php artisan serve`, `npm run dev`) along with information on the address where the application will be available in the browser (e.g., `http://localhost:8000`).
 
 ## Project Startup (User)
 

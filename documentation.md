@@ -10,7 +10,7 @@ Lista pytań pomocniczych:
 ## Uruchomienie projektu (developer)
 
 Podaj użyte technologie w przejrzystej postaci (np. tabelka) wraz z linkami do oficjalnych stron. 
-**Kluczowe:** Zawsze podawaj dokładne wersje technologii (np. `.NET 8.0`, `React 18`, `Python 3.12`). Brak konkretnej wersji to częsty powód problemów z uruchomieniem starszych projektów na nowych maszynach.
+**Kluczowe:** Zawsze podawaj dokładne wersje technologii (np. `PHP 8.5`, `Laravel 13`, `MySQL 8.0`). Brak konkretnej wersji to częsty powód problemów z uruchomieniem starszych projektów na nowych maszynach.
 
 
 ### Wymagania programowe
@@ -18,25 +18,25 @@ Podaj użyte technologie w przejrzystej postaci (np. tabelka) wraz z linkami do 
 Wypisz narzędzia niezbędne do zbudowania i uruchomienia projektu w trybie deweloperskim na czystym komputerze. Zwróć uwagę na:
 
 - **System operacyjny** (np. Windows 11, macOS, Linux).
-- **Środowisko uruchomieniowe / SDK** (np. .NET SDK 8.0, Node.js v20+, JDK 17).
-- **Silnik bazy danych** (np. PostgreSQL 16, MySQL, SQL Server 2022).
-- **Dodatkowe narzędzia** (np. Docker, Docker Compose, konkretny menedżer pakietów jak `npm` czy `yarn`).
+- **Środowisko uruchomieniowe / SDK** (np. PHP 8.5, Node.js v22+, Composer).
+- **Silnik bazy danych** (np. MySQL 8.0, PostgreSQL 16).
+- **Dodatkowe narzędzia** (np. Docker, Docker Compose, konkretny menedżer pakietów jak `npm` czy `composer`).
 
 ### Proces instalacji
 
 Instrukcja "krok po kroku", która prowadzi za rękę. Zakładaj, że osoba uruchamiająca projekt nie zna użytego frameworka.
 1. Jak pobrać projekt (np. `git clone <url>`).
-2. Jak zainstalować zależności (np. `npm install`, `dotnet restore`, `pip install -r requirements.txt`).
+2. Jak zainstalować zależności (np. `composer install`, `npm install`).
 
 ### Proces konfiguracji
 
 Opisz wszystko to, co programista musi ustawić na swojej maszynie przed pierwszym uruchomieniem:
 1. **Zmienne środowiskowe:** np. utwórz plik `.env` na podstawie `.env.example` i wpisz tam klucze API.
 2. **Baza danych:** jak skonfigurować *connection string* (połączenie z bazą).
-3. **Migracje:** komenda do stworzenia struktury bazy (np. `dotnet ef database update`, `python manage.py migrate`).
+3. **Migracje:** komenda do stworzenia struktury bazy (np. `php artisan migrate`, `php artisan db:seed`).
 4. **Dane początkowe (Seed):** jak wygenerować dane testowe i jakie są domyślne dane logowania dla konta administratora (login/hasło).
 
-**Uruchomienie projektu w terminalu:** Podaj dokładną komendę, która uruchomi aplikację (np. `dotnet run`, `npm run dev`) wraz z informacją, pod jakim adresem aplikacja będzie dostępna w przeglądarce (np. `http://localhost:5000`).
+**Uruchomienie projektu w terminalu:** Podaj dokładną komendę, która uruchomi aplikację (np. `php artisan serve`, `npm run dev`) wraz z informacją, pod jakim adresem aplikacja będzie dostępna w przeglądarce (np. `http://localhost:8000`).
 
 ## Uruchomienie projektu (user)
 
