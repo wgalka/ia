@@ -91,6 +91,10 @@ Istotnym elementem rozwiązania będzie możliwość importowania historii trans
 
 ## Dokumentacja
 
+[Szablon dokumentacji](documentation.md)
+
+[poradnik markdown](https://www.markdownguide.org/)
+
 **Godziny niekontaktowe – praca własna studenta 20h**
 
 ### Na ocenę 3.0 Dokumentacja powinna zawierać:

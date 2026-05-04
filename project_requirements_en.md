@@ -94,6 +94,10 @@ An essential element of the solution will be the ability to import transaction h
 
 ## Documentation
 
+[Documentation template](documentation_en.md)
+
+[markgown guide](https://www.markdownguide.org/)
+
 **Non-contact hours – student's own work 90h**
 
 ### For grade 3.0, the documentation should include:
