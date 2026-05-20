@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\AuthController;
 use function Termwind\render;
 
 # Obtain something form database
@@ -60,6 +61,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource("/category", CategoryController::class);
 
 
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/auth/login', 'login')->name('login');
+    Route::post('/auth/login', 'authenticate')->name('login.authenticate');
+    Route::get('/auth/logout', 'logout')->name('logout');
+    //TODO CREATE A REGUSTER FUNCTION/ROUTE
+
+    Route::get('/auth/register', 'register')->name('register');
+    Route::post('/auth/register', 'store')->name('register.store');
+
+});
 

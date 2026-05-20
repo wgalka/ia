@@ -1,3 +1,4 @@
+```markdown
 # Project Topic
 
 Short, concise description explaining the main goal of the application, who it is intended for, and its primary use case.
@@ -61,3 +62,4 @@ Every image should have a description explaining what is in the picture.
 - What was missing in the first version of the project?
 - What functionalities could be created in "v2.0" (e.g., payment integration, email notification system)?
 - Where do you see potential for optimization (e.g., adding caching, changing the database)?
+```
